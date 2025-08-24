@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+
+  <link rel="stylesheet" href="css/geral.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <header>
+    <h1>
+      <a href="index.html">
+        <img src="img/logo ocorrencias.png" height="80" alt="logo">
+      </a>
+    </h1>
+    <nav>
+      <a href="envio_ocorrencia.html">Enviar ocorrência</a>
+      <a href="index.html#login">
+        <img src="img/icons/conta.svg" alt="Conta">
+      </a>
+      <a href="sobre_nos.html">Sobre nós</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div id="navegacao">
+        <span class="opNav" onclick="loadCadastros()">Cadastros</span>
+        <span class="opNav" onclick="loadOcorrencias()">Ocorrencias</span>
+      </div>
+
+
+      <div id="cadastros">
+        <table id="tableCadastros">
+          <thead>
+            <td>Nome</td>
+            <td>Telefone</td>
+            <td>Email</td>
+            <td>Opções</td>
+          </thead>
+          <tbody id="pessoas"></tbody>
+        </table>
+      </div>
+
+      <div id="ocorrencias">
+
+      </div>
+
+      <div id="modalEditarCadastro">
+        <form id="editarCadastro">
+          <label for="edit_nome">Nome</label>
+          <input required type="text" id="edit_nome">
+
+          <label for="edit_email">Email</label>
+          <input required type="text" id="edit_email">
+
+          <label for="edit_telefone">Telefone</label>
+          <input required type="text" id="edit_telefone">
+
+          <label for="edit_senha_antiga">Senha antiga</label>
+          <input disabled required type="text" id="edit_senha_antiga">
+
+          <div>
+            <input type="checkbox" id="checkboxMudarSenha"> 
+            <label for="checkboxMudarSenha">Mudar senha</label>
+          </div>
+
+          <div id="mudarSenha">
+            <label for="edit_nova_senha">Nova senha</label>
+            <input type="text" id="edit_nova_senha">
+
+            <label for="edit_confirmar_nova_senha">Confirme a nova senha</label>
+            <input type="text" id="edit_confirmar_nova_senha">
+          </div>
+
+          <button>Confirmar alterações</button>
+          <button type="button" onclick="document.getElementById('modalEditarCadastro').style.display = 'none'">Fechar</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div id="footer_contatos">
+      <p>Github: <a target="_blank" href="https://github.com/FelipeGSG">FelipeGSG</a></p>
+      <p>Telefone: +55 11 96282-2490</p>
+      <p>SENAI - Nami Jafet</p>
+    </div>
+    <div id="footer_descricao">
+      <p>
+        <strong>NUNCA</strong> será enviado qualquer retorno  <br>
+        das autoridades após o envio de uma ocorrência <br> 
+        para proteção de dados previsto na LGPD 
+      </p>
+    </div>
+    <div id="footer_outrasInfo">
+      <p>&copy; 2025, Todos os direitos reservados</p>
+      <img height="24" src="img/flags/brasil.png" alt="Brasil">
+      <img height="24" src="img/flags/eua.jpg" alt="EUA">
+      <img height="24" src="img/flags/espanha.png" alt="Espanha">
+    </div>
+  </footer>
+
+  <script src="js/geral.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

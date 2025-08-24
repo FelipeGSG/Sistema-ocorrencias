@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Envio de ocorrências</title>
+
+  <link rel="stylesheet" href="css/geral.css">
+  <link rel="stylesheet" href="css/envio_ocorrencia.css">
+</head>
+<body>
+  <header>
+    <h1>
+      <a href="index.html">
+        <img src="img/logo ocorrencias.png" height="80" alt="logo">
+      </a>
+    </h1>
+    <nav>
+      <a href="envio_ocorrencia.html" class="navSelected">Enviar ocorrência</a>
+      <a href="index.html#login">
+        <img src="img/icons/conta.svg" alt="user">
+      </a>
+      <a href="sobre_nos.html">Sobre nós</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <form id="ocorrencia" onsubmit="event.preventDefault(); enviarOcorrencia()">
+        <label for="denunciante">Nome do denunciante</label>
+        <input required id="denunciante" type="text" placeholder="Informe sobre o denunciante">
+
+        <label for="acusado">Nome do acusado</label>
+        <input required id="acusado" type="text" placeholder="Informe sobre o acusado">
+
+        <label for="data">Data da ocorrência</label>
+        <input required id="data" type="datetime-local">
+
+        <label for="local">Local da ocorrência</label>
+        <input required id="local" type="text" placeholder="Informe sobre o local">
+
+        <label for="descricao">Descrição</label>
+        <input required id="descricao" type="text" placeholder="Informe sobre o descricao">
+
+        <label for="testemunha_nome">Testemunhas (ao menos 1)</label>
+        <ol id="listaTestemunhas"></ol>
+        <div>
+          <input id="testemunha_nome" type="text" placeholder="Insira o nome da testemunha">
+          <input id="testemunha_telefone" type="tel" placeholder="Insira o telefone da testemunha">
+          <button type="button" onclick="adicionarTestemunha()">Adicionar testemunha</button>
+        </div>
+
+        <label for="evidencia_arquivo">Evidências <sup><i>Máximo ( <span id="nEvidencias">0</span>/5 )</i></sup></label>
+        <ol id="listaEvidencias"></ol>
+        <div>
+          <input id="evidencia_arquivo" type="file" multiple accept="image/*,video/*,audio/*">
+          <button type="button" onclick="adicionarEvidencia()">Confirmar evidência</button>
+        </div>
+
+        <button type="button" onclick="enviarEvidencias()">Enviar todas</button>
+
+
+        <label for="info_adicional">
+          Informações adicionais <br>
+          <sub><i>Opcional, mas recomendado</i></sub>
+        </label>
+        <textarea id="info_adicional"></textarea>
+
+        <button type="submit">Confirmar e enviar</button>
+
+      </form>
+    </div>
+  </main>
+
+
+  <footer>
+    <div id="footer_contatos">
+      <p>Github: <a target="_blank" href="https://github.com/FelipeGSG">FelipeGSG</a></p>
+      <p>Telefone: +55 11 96282-2490</p>
+      <p>SENAI - Nami Jafet</p>
+    </div>
+    <div id="footer_descricao">
+      <p>
+        <strong>NUNCA</strong> será enviado qualquer retorno  <br>
+        das autoridades após o envio de uma ocorrência <br> 
+        para proteção de dados previsto na LGPD 
+      </p>
+    </div>
+    <div id="footer_outrasInfo">
+      <p>&copy; 2025, Todos os direitos reservados</p>
+      <img height="24" src="img/flags/brasil.png" alt="Brasil">
+      <img height="24" src="img/flags/eua.jpg" alt="EUA">
+      <img height="24" src="img/flags/espanha.png" alt="Espanha">
+    </div>
+  </footer>
+
+  <script src="js/geral.js"></script>
+  <script src="js/envio_ocorrencia.js"></script>
+</body>
+</html>
