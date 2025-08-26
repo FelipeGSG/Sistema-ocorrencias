@@ -177,6 +177,8 @@ form#editarCadastro button:hover {
   left: 0px;
   transform: translate(5%, 10%);
   object-fit: cover;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0px 0px 5px black;
 }
 
 

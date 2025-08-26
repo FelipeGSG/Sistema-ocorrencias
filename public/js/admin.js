@@ -122,6 +122,9 @@ async function loadOcorrencias(){
           <button class='botao-azul' onclick='loadLista(${i}, "ocTestemunhas")'>Testemunhas</button>
           <button class='botao-azul' onclick='loadLista(${i}, "ocEvidencias")'>Evidências</button>
         <div>
+        <div style="width:100%">
+          <button class='botao-azul' onclick="deleteOcorrencia(${d.id})">Deletar</button>
+        </div>
     `
     
     const testemunhas = document.createElement("div")
@@ -170,6 +173,17 @@ async function loadOcorrencias(){
     document.getElementById("ocorrencias").appendChild(div)
 
   });
+}
+
+function deleteOcorrencia(id){
+  fetch(`${link}/ocorrencias/${id}`,
+    {method: "DELETE"}
+  ).then(() =>{
+    alert("Ocorrência deletada com sucesso!")
+    loadOcorrencias()
+  }).catch(() => {
+    alert("Erro ao deletar ocorrência")
+  })
 }
 
 function loadLista(index, secao){
