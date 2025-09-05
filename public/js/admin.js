@@ -117,6 +117,7 @@ async function loadOcorrencias(){
         <p>Nome do acusado: ${d.acusado}</p>
         <p><span>Data: ${formatarData(d.data)}</span> - <span>Local: ${d.local}</span></p>
         <p>Descrição: <i>${(d.descricao || "Não há descrição")}</i></p>
+        <p>Informações adicionais: <i>${(d.info_adicional || "Não há informações adicionais")}</i></p>
      
         <div style="width:100%;">
           <button class='botao-azul' onclick='loadLista(${i}, "ocTestemunhas")'>Testemunhas</button>

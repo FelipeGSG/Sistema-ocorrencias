@@ -133,6 +133,10 @@ form sub {
   flex-wrap: wrap;
   justify-content: space-between;
   border-bottom: 1px solid #dddddd;
+  padding: 2px 8px;
+}
+#listaTestemunhas li:hover{
+  background-color: #f1f1f1;
 }
 
 #listaEvidencias{

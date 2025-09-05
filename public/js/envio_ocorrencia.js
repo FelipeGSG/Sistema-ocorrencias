@@ -86,7 +86,7 @@ async function enviarOcorrencia(){
   }
 
   await enviarEvidencias()
-  console.log(filesFromOcorrencia)
+  // console.log(filesFromOcorrencia)
 
   const response = await fetch(`${link}/ocorrencias`, {
     method: "POST",
@@ -94,7 +94,8 @@ async function enviarOcorrencia(){
     body: JSON.stringify({
       denunciante, acusado, data,
       local, descricao, testemunhas,
-      evidencias: filesFromOcorrencia, info_adicional
+      evidencias: filesFromOcorrencia, 
+      info_adicional: info_adicional || "Não há informações adicionais"
     })
   })
 
@@ -117,6 +118,9 @@ function adicionarTestemunha(){
   if(!nome || !telefone){
     return
   }
+
+  document.getElementById("testemunha_nome").value = ''
+  document.getElementById("testemunha_telefone").value = ''
 
   testemunhas.push([nome, telefone])
   atualizarListaTestemunha()

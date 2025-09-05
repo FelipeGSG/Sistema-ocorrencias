@@ -28,7 +28,7 @@
     <div class="container">
       <form id="login" onsubmit="event.preventDefault(); envioLogin()">
         <h2>Login</h2>
-
+        <i id="statusLogin"></i>
         <div>
           <label for="login_nome">Nome </label>
           <input required id="login_nome" type="text" placeholder="Insira seu nome ">
@@ -43,7 +43,7 @@
           <input required id="login_confirmarSenha" type="password" placeholder="Confirme sua senha">
         </div>
 
-        <button>Entrar</button>
+        <button type="submit">Entrar</button>
 
         <a onclick="toggleLogin(false)">Não possui uma conta?</a>
 
@@ -82,7 +82,7 @@
 
   <footer>
     <div id="footer_contatos">
-      <p>Github: <a target="_blank" href="/https://github.com/FelipeGSG">FelipeGSG</a></p>
+      <p>Github: <a target="_blank" href="https://github.com/FelipeGSG">FelipeGSG</a></p>
       <p>Telefone: +55 11 96282-2490</p>
       <p>SENAI - Nami Jafet</p>
     </div>

@@ -42,10 +42,18 @@ async function envioCadastro(){
 }
 
 async function envioLogin() {
+
+  document.getElementById("statusLogin").innerText = "Carregando."
+
   const nome = document.getElementById("login_nome").value
   const email = document.getElementById("login_email").value
   const senha = document.getElementById("login_senha").value
   const confirmarSenha = document.getElementById("login_confirmarSenha").value
+
+  document.getElementById("login_nome").disabled = true
+  document.getElementById("login_email").disabled = true
+  document.getElementById("login_senha").disabled = true
+  document.getElementById("login_confirmarSenha").disabled = true
 
   if(!nome || !email || !senha || !confirmarSenha){
     alert("Necessário completar todos os campos")     
@@ -57,35 +65,71 @@ async function envioLogin() {
     return
   }
 
-  const response = await fetch(`${link}/pessoas`)
-  if(!response.ok){
-    alert("Erro procurar informações")
-    console.error(response.status, response.statusText)
-    return
-  }
-  const dados = await response.json()
+  let countDots = 1
+  let carregarPontos = setInterval(() =>{
+    countDots++
+    countDots = countDots % 3
 
-  let userEncontrado = false
-
-  dados.forEach(e => {
-    if(
-      ((nome == e.nome) || (email == e.email)) &&
-      (senha === e.senha)
-    ){
-      userEncontrado = true
-      sessionStorage.setItem("user", e.id)
-
-      if(e.role === "admin"){
-        window.location.href = "admin.html"
-      } else{
-        window.location.href = "envio_ocorrencia.html"
-      }
+    switch (countDots) {
+      case 0:
+        document.getElementById("statusLogin").innerText = "Carregando."
+        break;
+      case 1:
+        document.getElementById("statusLogin").innerText = "Carregando.."
+        break;
+      case 2:
+        document.getElementById("statusLogin").innerText = "Carregando..."
+        break;
+      default:
+        break;
     }
-  });
+    
+  }, 1000)
 
-  if(!userEncontrado){
-    alert("Usuário não encontrado")
+  try {
+      const response = await fetch(`${link}/pessoas`)
+      if(!response.ok){
+        alert("Erro procurar informações")
+        console.error(response.status, response.statusText)
+        return
+      }
+      const dados = await response.json()
+
+      let userEncontrado = false
+
+      dados.forEach(e => {
+        if(
+          ((nome == e.nome) || (email == e.email)) &&
+          (senha === e.senha)
+        ){
+          userEncontrado = true
+          sessionStorage.setItem("user", e.id)
+
+          if(e.role === "admin"){
+            window.location.href = "admin.html"
+          } else{
+            window.location.href = "envio_ocorrencia.html"
+          }
+        }
+      });
+
+      if(!userEncontrado){
+        alert("Usuário não encontrado")
+        document.getElementById("statusLogin").innerText = "Usuário não encontrado"
+
+        document.getElementById("login_nome").disabled = false
+        document.getElementById("login_email").disabled = false
+        document.getElementById("login_senha").disabled = false
+        document.getElementById("login_confirmarSenha").disabled = false
+
+        clearInterval(carregarPontos)
+      }
+  } catch (error) {
+    alert("Erro ao enviar login")
+    window.location.reload()
+    console.log(error)
   }
+
 }
 
 function toggleLogin(login = true){

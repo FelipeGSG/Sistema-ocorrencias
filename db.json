@@ -75,7 +75,8 @@
       "email": "e@e",
       "telefone": "1234",
       "senha": "1234",
-      "id": 1
+      "id": 1,
+      "role": "user"
     },
     {
       "nome": "nombre",
