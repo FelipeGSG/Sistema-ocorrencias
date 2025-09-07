@@ -69,7 +69,7 @@ document.getElementById("editarCadastro").addEventListener("submit", async(e) =>
   const id = document.getElementById("editarCadastro").getAttribute("data-id")
 
   const response = await fetch(`${link}/pessoas/${id}`, {
-    method: "PUT",
+    method: "PATCH",
     headers: {"Content-type":"application/json"},
     body: JSON.stringify({nome, email, telefone, senha: (mudarSenha ? novaSenha : senha)})
   })
